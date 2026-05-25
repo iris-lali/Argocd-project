@@ -69,7 +69,9 @@ kubectl get pods -n dev
 
 ## Create Application using argocd CLI
 
-- Make sure you install argocd CLI
+- Make sure you install argocd CLI, link below
+https://argo-cd.readthedocs.io/en/stable/cli_installation/
+
 1) For Mac, Linux and WSL Homebrew
 ```bash 
 brew install argocd
