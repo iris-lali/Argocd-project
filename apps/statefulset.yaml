@@ -29,7 +29,8 @@ spec:
     - metadata:
         name: www
       spec:   
-        storageClassName: do-block-storage-retain
+        #storageClassName: do-block-storage-retain standard
+        storageClassName: standard
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests: 
