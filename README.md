@@ -36,7 +36,7 @@ minikube service argocd-server -n argocd
 
 ## Login Cred
 - Username: admin
--Password: Run the bellow commands to get the password
+- Password: Run the bellow commands to get the password
 
 ```bash
 kubectl get secret -n argocd # Will show argocd-initial-admin-secret 
@@ -106,6 +106,12 @@ https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd/
 ```bash
 argocd app create daemon --repo https://github.com/iris-lali/Argocd-project.git --path daemonset --dest-namespace dev --dest-server https://kubernetes.default.svc --directory-recurse --sync-policy automatic
 ```
+### Login into argocd using the cli
+
+```bash
+argocd login SERVER
+```
+- provide username and password
 
 ### Verify your deployment
 
