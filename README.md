@@ -67,6 +67,51 @@ kubectl get pods -n dev
 
 ![alt text](image-1.png)
 
+## Create Application using argocd CLI
+
+- Make sure you install argocd CLI
+1) For Mac, Linux and WSL Homebrew
+```bash 
+brew install argocd
+```
+2) For Windows
+- Download With PowerShell: Invoke-WebRequest¶
+You can view the latest version of Argo CD at the link above or run the following command to grab the version:
+```bash
+$version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+```
+- Replace $version in the command below with the version of Argo CD you would like to download:
+
+```bash
+$url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+$output = "argocd.exe"
+
+Invoke-WebRequest -Uri $url -OutFile $output
+```
+- Also please note you will probably need to move the file into your PATH. Use following command to add Argo CD into environment variables PATH
+
+```bash
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Path\To\ArgoCD-CLI", "User")
+```
+
+
+- Use the link below to get argocd command reference
+https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd/
+
+- Once on the reference page, scrow down and click on argocd app; it will take you to a next page, click on argocd app create.
+- Copy one of the example to create your app through the CLI
+
+```bash
+argocd app create daemon --repo https://github.com/iris-lali/Argocd-project.git --path daemonset --dest-namespace dev --dest-server https://kubernetes.default.svc --directory-recurse --sync-policy automatic
+```
+
+### Verify your deployment
+
+```bash
+kubectl get daemonset -n dev
+kubectl get pods -n dev
+```
+
 
 
 
